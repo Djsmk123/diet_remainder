@@ -22,7 +22,11 @@ class DropDownButtonWidget<T> extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:  [
-           Text(msg),
+           Text(msg,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+             color: Colors.black,
+             fontSize: 14.sp,
+
+           ),),
           DropdownButton<T>(
               value: value,
               underline: const SizedBox(),

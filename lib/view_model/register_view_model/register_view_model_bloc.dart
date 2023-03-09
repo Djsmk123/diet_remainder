@@ -16,6 +16,9 @@ class RegisterViewModelBloc extends Bloc<RegisterViewModelEvent, RegisterViewMod
       if(event is RegisterViewModelDietRegistrationEvent){
         emit(RegisterViewModelDietRegistration());
       }
+      if(event is RegisterViewModelBackEvent){
+        emit(RegisterViewModelInitial());
+      }
     });
   }
 }

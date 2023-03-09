@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 class MealsModel extends Equatable{
   final String idMeal;
   final String strMeal;
-  final DateTime dateMeal;
+  final TimeOfDay dateMeal;
   final bool isCompleted;
   const MealsModel({required this.idMeal, required this.strMeal, required this.dateMeal, required this.isCompleted});
   @override
@@ -18,4 +19,8 @@ class MealsModelsList extends Equatable{
   @override
   // TODO: implement props
   List<Object?> get props => [meals];
+  MealsModelsList copyWith({List<MealsModel>? meals}){
+    return MealsModelsList(meals: meals ?? this.meals);
+  }
+
 }

@@ -17,3 +17,10 @@ class RegisterViewModelDietRegistrationEvent extends RegisterViewModelEvent {
   List<Object?> get props => [];
 
 }
+class RegisterViewModelBackEvent extends RegisterViewModelEvent {
+  @override
+  // TODO: implement props
+
+  @override
+  List<Object?> get props => [];
+}
