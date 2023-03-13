@@ -1,4 +1,4 @@
-part of 'register_view_model_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class RegisterViewModelState extends Equatable {
   const RegisterViewModelState();
@@ -22,8 +22,5 @@ class RegisterViewModelError extends RegisterViewModelState {
   @override
   List<Object> get props => [message];
 }
-class RegisterViewModelDietRegistration extends RegisterViewModelState {
-  @override
-  List<Object> get props => [];
-}
+
 

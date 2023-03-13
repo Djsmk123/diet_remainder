@@ -16,11 +16,16 @@ import 'package:flutter/material.dart' as _i5;
 
 import '../view/home_screen/home_screen_view.dart' as _i3;
 import '../view/intro_screen/intro_screen_view.dart' as _i1;
-import '../view/register_screen/regiser_screen_view.dart' as _i2;
+import '../view/register_screen/register_screen_view.dart' as _i2;
+import 'router_dat.dart' as _i6;
 
 class AppRouter extends _i4.RootStackRouter {
-  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+  AppRouter({
+    _i5.GlobalKey<_i5.NavigatorState>? navigatorKey,
+    required this.authGuard,
+  }) : super(navigatorKey);
+
+  final _i6.AuthGuard authGuard;
 
   @override
   final Map<String, _i4.PageFactory> pagesMap = {
@@ -61,6 +66,7 @@ class AppRouter extends _i4.RootStackRouter {
         _i4.RouteConfig(
           IntroScreenView.name,
           path: '/intro',
+          guards: [authGuard],
         ),
         _i4.RouteConfig(
           RegisterScreenView.name,

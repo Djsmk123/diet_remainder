@@ -44,6 +44,7 @@ dependencies:
   lottie: ^2.2.0
   flutter_screenutil: ^5.6.1
   introduction_screen: ^3.1.6
+  path_provider: ^2.0.13
 dev_dependencies:
   flutter_test:
     sdk: flutter

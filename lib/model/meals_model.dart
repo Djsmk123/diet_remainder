@@ -9,6 +9,25 @@ class MealsModel extends Equatable{
   @override
   // TODO: implement props
   List<Object?> get props => [idMeal, strMeal, dateMeal];
+  factory MealsModel.fromJson(Map<String, dynamic> json) {
+    return MealsModel(
+      idMeal: json['idMeal'],
+      strMeal: json['strMeal'],
+      dateMeal: TimeOfDay(hour: json['dateMeal']['hour'], minute: json['dateMeal']['minute']),
+      isCompleted: json['isCompleted'],
+    );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'idMeal': idMeal,
+      'strMeal': strMeal,
+      'dateMeal': {
+        'hour': dateMeal.hour,
+        'minute': dateMeal.minute,
+      },
+      'isCompleted': isCompleted,
+    };
+  }
 }
 
 // ignore: must_be_immutable
@@ -21,6 +40,14 @@ class MealsModelsList extends Equatable{
   List<Object?> get props => [meals];
   MealsModelsList copyWith({List<MealsModel>? meals}){
     return MealsModelsList(meals: meals ?? this.meals);
+  }
+  factory MealsModelsList.fromJson(List<dynamic> json) {
+    return MealsModelsList(
+      meals: json.map((e) => MealsModel.fromJson(e)).toList(),
+    );
+  }
+   toJson() {
+    return meals.map((e) => e.toJson()).toList();
   }
 
 }

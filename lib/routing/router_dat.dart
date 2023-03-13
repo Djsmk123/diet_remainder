@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:diet_remainder/model/services/registration_service.dart';
 import 'package:diet_remainder/view/home_screen/home_screen_view.dart';
 import 'package:diet_remainder/view/intro_screen/intro_screen_view.dart';
-import 'package:diet_remainder/view/register_screen/regiser_screen_view.dart';
+import 'package:diet_remainder/view/register_screen/register_screen_view.dart';
 
 @CustomAutoRouter(
     replaceInRouteName: 'Page,Route',
@@ -13,6 +14,7 @@ import 'package:diet_remainder/view/register_screen/regiser_screen_view.dart';
         page: IntroScreenView,
         path: '/intro',
         initial: true,
+        guards: [AuthGuard],
       ),
       CustomRoute(
         page: RegisterScreenView,
@@ -30,7 +32,8 @@ class $AppRouter {}
 class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
-    bool isAuth = await Future.delayed(const Duration(seconds: 2), () => false);
+    final UserServices userServices = UserServices();
+    final bool isAuth = await userServices.isAuth();
     if (!isAuth) {
       resolver.next();
     } else {

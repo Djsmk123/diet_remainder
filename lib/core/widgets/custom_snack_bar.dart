@@ -8,7 +8,7 @@ void customSnackBar({required BuildContext context,required String msg,bool isSu
             Flexible(child: Text(msg,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color:Colors.white,fontSize: 16.sp,),)),
+              style: TextStyle(color:Colors.white,fontSize: 12.sp,),)),
           ],
         ),
         shape: RoundedRectangleBorder(
@@ -17,11 +17,11 @@ void customSnackBar({required BuildContext context,required String msg,bool isSu
 
         backgroundColor: isSuccess?Colors.green[900]:Colors.red[900],
         duration: const Duration(seconds: 2),
-        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         showCloseIcon: true,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         closeIconColor: Colors.white,
         elevation: 5,
-
         behavior: SnackBarBehavior.floating,
       ),
     );

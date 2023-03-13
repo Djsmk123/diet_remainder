@@ -25,4 +25,28 @@ class UserModel extends Equatable{
     mealsModelsList,
     targetWeight
   ];
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      name: json['name'],
+      age: json['age'],
+      weight: json['weight'],
+      height: json['height'],
+      noOfGlassWater: json['noOfGlassWater'],
+      noOfMeals: json['noOfMeals'],
+      mealsModelsList: MealsModelsList.fromJson(json['mealsModelsList']),
+      targetWeight: json['targetWeight'],
+    );
+  }
+ Map<String,dynamic> toJson() {
+    return {
+      'name': name,
+      'age': age,
+      'weight': weight,
+      'height': height,
+      'noOfGlassWater': noOfGlassWater,
+      'noOfMeals': noOfMeals,
+      'mealsModelsList': mealsModelsList.toJson(),
+      'targetWeight': targetWeight,
+    };
+  }
 }
