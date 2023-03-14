@@ -198,26 +198,7 @@ class _PersonalDetailsRegistrationViewState extends State<PersonalDetailsRegistr
           RoundedButton(
             onTap: (){
               if(!_formKey.currentState!.validate()){
-                MealsModelsList mealsModelsList = MealsModelsList(meals: const [
-                  MealsModel(
-                    idMeal: '1',
-                    strMeal: 'Breakfast',
-                    dateMeal: TimeOfDay(hour: 8, minute: 0),
-                    isCompleted: false,
-                  ),
-                  MealsModel(
-                    idMeal: '2',
-                    strMeal: 'Lunch',
-                    dateMeal: TimeOfDay(hour: 12, minute: 0),
-                    isCompleted: false,
-                  ),
-                  MealsModel(
-                    idMeal: '3',
-                    strMeal: 'Dinner',
-                    dateMeal: TimeOfDay(hour: 18, minute: 0),
-                    isCompleted: false,
-                  ),
-                ]);
+
                 /*final userModel = UserModel(
                   name: _nameController.text,
                   age: _ageController.text.isNotEmpty?int.parse(_ageController.text):0,
@@ -228,9 +209,9 @@ class _PersonalDetailsRegistrationViewState extends State<PersonalDetailsRegistr
                   noOfMeals: 3,
                   mealsModelsList: mealsModelsList,
                 );*/
-                final userModel=UserModel
-                  (name: "Smkwinner", weight: 56, targetWeight:60,height: 157, noOfGlassWater: 3, noOfMeals: 3, mealsModelsList: mealsModelsList);
-                BlocProvider.of<RegisterViewModelBloc>(context).add(RegisterViewModelEventRegister(userModel: userModel));
+                const userModel=UserModel
+                  (name: "Smkwinner", weight: 56, targetWeight:60,height: 157, noOfGlassWater: 3,);
+                BlocProvider.of<RegisterViewModelBloc>(context).add(const RegisterViewModelEventRegister(userModel: userModel));
                 _formKey.currentState!.save();
               }else{
                 customSnackBar( context: context, msg: 'Please fill all the fields',isSuccess: false);

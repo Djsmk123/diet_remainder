@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:diet_remainder/model/services/registration_service.dart';
+import 'package:diet_remainder/model/user_model.dart';
 import 'package:diet_remainder/view/home_screen/home_screen_view.dart';
 import 'package:diet_remainder/view/intro_screen/intro_screen_view.dart';
 import 'package:diet_remainder/view/register_screen/register_screen_view.dart';
@@ -32,12 +35,16 @@ class $AppRouter {}
 class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
+  try{
     final UserServices userServices = UserServices();
-    final bool isAuth = await userServices.isAuth();
-    if (!isAuth) {
-      resolver.next();
-    } else {
+    UserModel? userModel = await userServices.getUser();
+    if (userModel != null) {
       router.pushNamed('/home');
+    } else {
+      resolver.next();
     }
+  }catch(e){
+    resolver.next();
+  }
   }
 }

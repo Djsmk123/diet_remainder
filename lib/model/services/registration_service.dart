@@ -1,11 +1,13 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'package:path_provider/path_provider.dart';
 import 'package:diet_remainder/model/user_model.dart';
 import 'package:hive/hive.dart';
 
+import '../../core/converter.dart';
 import '../../core/errors/failures.dart';
-class UserServices{
+class UserServices with Parsers{
   Future<Box> openHiveBox(String boxName)async{
     if(!Hive.isBoxOpen(boxName)) {
       final documentDirectory = await getApplicationDocumentsDirectory();
@@ -17,34 +19,24 @@ class UserServices{
   Future<void> registerUser(UserModel userModel) async {
     try{
       final userBox = await openHiveBox('userBox');
-      log(userModel.toJson().toString());
-      userBox.put('user', userModel.toJson());
+      userBox.put('user', (userModel.toJson()));
     }on Exception{
       throw const DatabaseFailure();
     }
   }
-  Future<UserModel> getUser() async {
+  Future<UserModel?> getUser() async {
     try{
       final userBox = await openHiveBox('userBox');
-      final userJson=userBox.get('user');
-
-      return UserModel.fromJson(userJson);
+      final result = userBox.get('user');
+      return UserModel.fromJson(toJSon(result));
     }catch(e){
-      throw const DatabaseFailure();
-    }
-  }
-  Future<bool> isAuth() async {
-    try{
-      final userBox = await openHiveBox('userBox');
-      final userJson=userBox.get('user');
-     return userJson??false;
-    }catch(e){
+      log(e.toString());
       throw const DatabaseFailure();
     }
   }
   Future deleteAll() async {
     try{
-      final userBox = await Hive.openBox('userBox',path: './');
+      final userBox = await openHiveBox('userBox');
       userBox.deleteFromDisk();
     }catch(e){
       throw const DatabaseFailure();
@@ -67,7 +59,7 @@ class UserServices{
   }
   Future update(UserModel userModel) async {
     try{
-      final userBox = await Hive.openBox('userBox');
+     final userBox = await openHiveBox('userBox');
       userBox.put('user', userModel.toJson());
     }on Exception{
       throw const DatabaseFailure();

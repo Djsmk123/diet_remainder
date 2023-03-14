@@ -7,11 +7,11 @@ class UserModel extends Equatable{
   final double weight;
   final double height;
   final int noOfGlassWater;
-  final int noOfMeals;
-  final MealsModelsList mealsModelsList;
+
+
   final double? targetWeight;
 
-  const UserModel({required this.name, this.age,required this.weight,required this.height,required this.noOfGlassWater, required this.noOfMeals, required this.mealsModelsList, this.targetWeight});
+  const UserModel({required this.name, this.age,required this.weight,required this.height,required this.noOfGlassWater, this.targetWeight});
 
   @override
   // TODO: implement props
@@ -21,8 +21,6 @@ class UserModel extends Equatable{
     weight,
     height,
     noOfGlassWater,
-    noOfMeals,
-    mealsModelsList,
     targetWeight
   ];
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -32,8 +30,6 @@ class UserModel extends Equatable{
       weight: json['weight'],
       height: json['height'],
       noOfGlassWater: json['noOfGlassWater'],
-      noOfMeals: json['noOfMeals'],
-      mealsModelsList: MealsModelsList.fromJson(json['mealsModelsList']),
       targetWeight: json['targetWeight'],
     );
   }
@@ -44,8 +40,6 @@ class UserModel extends Equatable{
       'weight': weight,
       'height': height,
       'noOfGlassWater': noOfGlassWater,
-      'noOfMeals': noOfMeals,
-      'mealsModelsList': mealsModelsList.toJson(),
       'targetWeight': targetWeight,
     };
   }

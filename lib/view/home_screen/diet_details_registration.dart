@@ -17,19 +17,18 @@ class _DietDetailsViewState extends State<DietDetailsView> {
       idMeal: '1',
       strMeal: 'Breakfast',
       dateMeal: TimeOfDay(hour: 8, minute: 0),
-      isCompleted: false,
+
     ),
     MealsModel(
       idMeal: '2',
       strMeal: 'Lunch',
       dateMeal: TimeOfDay(hour: 12, minute: 0),
-      isCompleted: false,
+
     ),
     MealsModel(
       idMeal: '3',
       strMeal: 'Dinner',
       dateMeal: TimeOfDay(hour: 18, minute: 0),
-      isCompleted: false,
     ),
   ]);
 
@@ -49,7 +48,6 @@ class _DietDetailsViewState extends State<DietDetailsView> {
             idMeal: '${mealsModelsList.meals.length+1}',
             strMeal: 'Meal ${mealsModelsList.meals.length+1}',
             dateMeal: const TimeOfDay(hour: 18, minute: 0),
-            isCompleted: false,
           )
         ]
     );

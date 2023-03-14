@@ -4,8 +4,7 @@ class MealsModel extends Equatable{
   final String idMeal;
   final String strMeal;
   final TimeOfDay dateMeal;
-  final bool isCompleted;
-  const MealsModel({required this.idMeal, required this.strMeal, required this.dateMeal, required this.isCompleted});
+  const MealsModel({required this.idMeal, required this.strMeal, required this.dateMeal});
   @override
   // TODO: implement props
   List<Object?> get props => [idMeal, strMeal, dateMeal];
@@ -14,7 +13,7 @@ class MealsModel extends Equatable{
       idMeal: json['idMeal'],
       strMeal: json['strMeal'],
       dateMeal: TimeOfDay(hour: json['dateMeal']['hour'], minute: json['dateMeal']['minute']),
-      isCompleted: json['isCompleted'],
+
     );
   }
   Map<String, dynamic> toJson() {
@@ -25,7 +24,7 @@ class MealsModel extends Equatable{
         'hour': dateMeal.hour,
         'minute': dateMeal.minute,
       },
-      'isCompleted': isCompleted,
+
     };
   }
 }

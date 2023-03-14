@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/diet_tracker_logo.png
+  AssetGenImage get dietTrackerLogo =>
+      const AssetGenImage('assets/images/diet_tracker_logo.png');
+
   /// File path: assets/images/intro-1.jpg
   AssetGenImage get intro1 => const AssetGenImage('assets/images/intro-1.jpg');
 
@@ -21,8 +25,13 @@ class $AssetsImagesGen {
   /// File path: assets/images/intro-3.png
   AssetGenImage get intro3 => const AssetGenImage('assets/images/intro-3.png');
 
+  /// File path: assets/images/weight_tracker_logo.png
+  AssetGenImage get weightTrackerLogo =>
+      const AssetGenImage('assets/images/weight_tracker_logo.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [intro1, intro2, intro3];
+  List<AssetGenImage> get values =>
+      [dietTrackerLogo, intro1, intro2, intro3, weightTrackerLogo];
 }
 
 class Assets {
